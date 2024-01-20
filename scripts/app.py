@@ -56,9 +56,9 @@ fixtures_with_uuids = fixtures_with_uuids.drop(["home_team","away_team"], axis=1
 FILENAME = f"FIXTURES|football-db|{today}.csv"
 #and now save this file to storage
 print(f"Saving the FIXTURE of TODAY...")
-save_file_to_storage(bucket_name='football_llyn', file_path_to_upload=FILENAME, object_to_upload=fixtures_with_uuids)
+save_file_to_storage(bucket_name='football-datalake', file_path_to_upload=FILENAME, object_to_upload=fixtures_with_uuids)
 print(f"Loading the FIXTURE of TODAY...")
-load_file_to_table(bucket_name='football_llyn', name_of_file=FILENAME, 
+load_file_to_table(bucket_name='football-datalake', name_of_file=FILENAME, 
                    table_name="fixture")
 print("Succeeded.")
 #get URLs to scrape for the TEAM STATS
@@ -75,12 +75,12 @@ for url in url_scrape:
     all_team_stats = pd.concat([all_team_stats, team_stat])
     print(f"Succeeded.")
 FILENAME = f"TEAM-STATS|football-db|{today}.csv"
-save_file_to_storage(bucket_name='football_llyn', file_path_to_upload=FILENAME, object_to_upload=all_team_stats)
+save_file_to_storage(bucket_name='football-datalake', file_path_to_upload=FILENAME, object_to_upload=all_team_stats)
 ##################
 #SAVE THE TEAM STATS
 ##################
 print(f"Saving the TEAM STATS of TODAY...")
-load_file_to_table(bucket_name='football_llyn', name_of_file=FILENAME, 
+load_file_to_table(bucket_name='football-datalake', name_of_file=FILENAME, 
                    table_name="player_stats", drop_columns=True, cols_to_drop=["team_name"])
 print("Succeeded.")
 ##################
