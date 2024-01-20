@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+beautifulsoup4 = "*"
+pandas = "*"
+requests = "*"
+psycopg2-binary = "*"
+python-dotenv = "*"
+google-cloud-storage = "*"
+gunicorn = "*"
+
+[dev-packages]
+ipykernel = "*"
