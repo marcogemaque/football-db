@@ -8,7 +8,7 @@ if not os.path.isdir(".secrets/"):
 def create_credentials():
     # Data to be written
     dictionary = {
-    "type": os.environ["service_account"],
+    "type": os.environ["type"],
     "project_id": os.environ["project_id"],
     "private_key_id": os.environ["private_key_id"],
     "private_key": os.environ["private_key"],
