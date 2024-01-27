@@ -10,7 +10,7 @@ def load_file_to_table(bucket_name:str, name_of_file, table_name,
     Function to load to table TEAM_STATS today's file.
     """
     #now read the data from the data lake
-    storage_client = storage.Client.from_service_account_json("./.secrets/gcp_credentials.json")
+    storage_client = storage.Client.from_service_account_json("./.secrets/fifa-project-399416-df12ebf73aeb.json")
     bucket = storage_client.bucket(bucket_name)
     blob = bucket.blob(name_of_file)
     blob.download_to_filename(f"./data/output/{name_of_file}")
