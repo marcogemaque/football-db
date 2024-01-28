@@ -26,4 +26,4 @@ def create_credentials():
     
     # Writing to sample.json
     with open("./.secrets/fifa-project-399416-df12ebf73aeb.json", "w") as outfile:
-        outfile.dump(json_object)
+        json.dump(json_object, outfile)
