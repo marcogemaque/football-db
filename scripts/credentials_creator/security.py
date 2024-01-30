@@ -20,8 +20,6 @@ def create_credentials():
     "client_x509_cert_url": os.environ["client_x509_cert_url"],
     "universe_domain": os.environ["universe_domain"]
     }
-    print("debug:")
-    print(dictionary)
     
     # Serializing json
     json_object = json.dumps(dictionary)
