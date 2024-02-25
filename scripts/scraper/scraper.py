@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-def get_the_fixture_and_results(headers, URL):
+def get_the_fixture_and_results(headers, URL, season, competition_name):
     #make the request
     # URL = "https://www.transfermarkt.co.uk/professional-football-league/gesamtspielplan/wettbewerb/AR1N/saison_id/2022"
     # URL = "https://www.transfermarkt.co.uk/copa-de-la-liga-profesional-de-futbol/gesamtspielplan/wettbewerb/CDLP/saison_id/2022"
@@ -97,7 +97,8 @@ def get_the_fixture_and_results(headers, URL):
     all_results_cleaned["home_team"] = all_results_cleaned["home_team"].str.replace("'","")
     all_results_cleaned["away_team"] = all_results_cleaned["away_team"].str.replace("'","")
     #add the competition that we're getting it from
-    all_results_cleaned["competition"] = "Copa de la Liga"
+    all_results_cleaned["competition_name"] = f"{competition_name}"
+    all_results_cleaned["season"] = f"{season}"
     all_results_cleaned["country_competition"] = "Argentina"
     return all_results_cleaned
 

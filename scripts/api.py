@@ -38,13 +38,16 @@ def query_team_urls():
     team_urls_to_query = pd.read_sql_query(query, con=connection)
     return team_urls_to_query
 
-def delete_all_data_from_table(table_name:str):
+def delete_all_data_from_table(table_name:str, season:int, competition_name:str, complex_mode=True):
     """
     A function to delete ALL ROWS from table_name.
     """
     connection, cursor = connect_to_db()
     print(f"Deleting data from table {table_name}...")
-    query = f"delete from public.{table_name}"
+    if complex_mode == True:
+        query = f"delete from public.{table_name} where competition_name = '{competition_name}' and season = {season}"
+    else:
+        query = f"delete from public.{table_name}"
     cursor.execute(query)
     connection.commit()
     print(f"Successful.")
@@ -76,3 +79,14 @@ def refresh_materialized_view():
     cursor.execute(query)
     connection.commit()
     print("Completed.")
+
+def query_competitions_urls():
+    """
+    Queries to get the COMPETITIONS' URLs.
+    """
+    connection, cursor = connect_to_db()
+    query = "SELECT * FROM competition_scrape_urls where active = true;"
+    print("Getting the competitions to scrape...")
+    cursor.execute(query)
+    competitions_to_query = pd.read_sql_query(query, con=connection)
+    return competitions_to_query
