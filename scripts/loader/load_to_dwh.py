@@ -5,7 +5,7 @@ import psycopg2
 from psycopg2 import extras
 
 def load_file_to_table(bucket_name:str, name_of_file, table_name,
-                       competition_name:str, season:int,
+                       competition_name:str="", season:int=None,
                        drop_columns:bool=False, cols_to_drop:list=None,
                        complex_mode=True):
     """
