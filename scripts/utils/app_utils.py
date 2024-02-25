@@ -41,7 +41,7 @@ def find_competition(row, headers, today):
     save_file_to_storage(bucket_name='football-datalake', file_path_to_upload=FILENAME, object_to_upload=fixtures_with_uuids)
     print(f"Loading the FIXTURE of TODAY...")
     load_file_to_table(bucket_name='football-datalake', name_of_file=FILENAME, 
-                   table_name="fixture")
+                   table_name="fixture", competition_name=competition_name, season=season)
     print("Succeeded.")
 
 def apply_aliases_to_uuid(row, df_with_aliases):
