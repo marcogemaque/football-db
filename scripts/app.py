@@ -3,7 +3,7 @@ from time import sleep
 import os
 #our created libs
 from credentials_creator.security import create_credentials
-from scraper.scraper import get_the_fixture_and_results, get_team_stats
+from scraper.scraper import get_team_stats
 from loader.to_cloud_storage import save_file_to_storage
 from loader.load_to_dwh import load_file_to_table
 from utils.app_utils import find_competition, apply_aliases_to_uuid

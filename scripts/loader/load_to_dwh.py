@@ -19,7 +19,7 @@ def load_file_to_table(bucket_name:str, name_of_file, table_name,
     #now read that file and load it to the actual 
     df_to_load = pd.read_csv(f"./data/output/{name_of_file}")
     #delete all data currently existing in the TEAM STATS table
-    delete_all_data_from_table(table_name, competition_name, season, complex_mode=complex_mode)
+    delete_all_data_from_table(table_name, competition_name=competition_name, season=season, complex_mode=complex_mode)
     #and now load data from the dataframe into the table
     conn, cursor = connect_to_db()
     #drop any list of columns from the original file
